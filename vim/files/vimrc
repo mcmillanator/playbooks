@@ -13,6 +13,10 @@ set clipboard=unnamedplus
 set spell spelllang=en_us
 set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 
+" Open man page in a window
+" pressing K will open the man page of the highlighted word
+runtime! ftplugin/man.vim
+
 " Configuration vim Airline
 let g:airline_theme='solarized'
 let g:airlie_solarized_bg='dark'
