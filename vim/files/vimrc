@@ -2,6 +2,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 colorscheme solarized
+set background=dark
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -31,8 +32,6 @@ nmap <silent> <LEFT> :cprev<CR>
 " Configuration NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-" Autostart NERDTree
-autocmd VimEnter * NERDTree
 
 " Configuration floaterm
 let g:floaterm_keymap_toggle = '<F12>'

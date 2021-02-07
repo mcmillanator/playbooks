@@ -6,14 +6,13 @@
     vim_dir: "{{ ansible_env.HOME }}/.vim"
     vimrc: "{{ ansible_env.HOME }}/.vimrc"
   tasks:
-    - name: Install required packages
-      package:
-        name:
-          - fonts-powerline
-          - git
-          - silversearcher-ag
-        state: present
-      become: yes
+    #    - name: Install required packages
+    #      package:
+    #        name:
+    #          - git
+    #          - silversearcher-ag
+    #        state: present
+    #      become: yes
     - name: Ensure .vim/{autoload,bundle} directory exists
       file:
         path: "{{ item }}"
