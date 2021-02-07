@@ -24,6 +24,13 @@
         - "{{ vim_dir }}/autoload"
         - "{{ vim_dir }}/bundle"
         - "{{ vim_dir }}/colors"
+    - name: install the Hack font
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+        dest: /usr/share/fonts/
+        list_files: true 
+        remote_src: yes
+      become: yes
     - name: Ensure Pathogen is in place
       get_url:
         dest: "{{ vim_dir }}/autoload/pathogen.vim"
@@ -40,6 +47,8 @@
         url: https://github.com/vim-airline/vim-airline
       - name: vim-airline-themes
         url: https://github.com/vim-airline/vim-airline-themes
+      - name: vim-devicons
+        url: https://github.com/ryanoasis/vim-devicons.git
       - name: vim-floaterm
         url: https://github.com/voldikss/vim-floaterm
       - name: nerdtree
