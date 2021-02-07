@@ -1,16 +1,28 @@
+" Pathogen for installing plugins
 execute pathogen#infect()
+" syntax highlighting on
 syntax on
 filetype plugin indent on
+" solarized color them
 colorscheme solarized
+" solarized dark
 set background=dark
+" number of spaces that a <Tab> counts for
 set tabstop=2
 set shiftwidth=2
+" use spaces to insert a <Tab>
 set expandtab
+" line numbers
 set number
+" relative line numbers
 set relativenumber
+" highlight search
 set hls
+" use system clipboard
 set clipboard=unnamedplus
+" enable spell check
 set spell spelllang=en_us
+" vim-obsession options
 set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
 
 " Open man page in a window
