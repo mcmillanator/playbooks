@@ -42,13 +42,13 @@
         update: yes
         recursive: no
       loop:
-      - name: vim-airline
+      - name: airline
         url: https://github.com/vim-airline/vim-airline
-      - name: vim-airline-themes
+      - name: airline-themes
         url: https://github.com/vim-airline/vim-airline-themes
-      - name: vim-devicons
+      - name: devicons
         url: https://github.com/ryanoasis/vim-devicons.git
-      - name: vim-floaterm
+      - name: floaterm
         url: https://github.com/voldikss/vim-floaterm
       - name: nerdtree
         url: https://github.com/preservim/nerdtree
