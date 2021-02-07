@@ -56,6 +56,8 @@
         url: https://github.com/Xuyuanp/nerdtree-git-plugin.git
       - name: solarized
         url: git://github.com/altercation/vim-colors-solarized.git
+      - name: uninpaired
+        url: https://tpope.io/vim/unimpaired.git
     - name: Ensure .vimrc config in place
       copy:
         src: vimrc
