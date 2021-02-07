@@ -46,6 +46,8 @@
         url: https://github.com/vim-airline/vim-airline
       - name: airline-themes
         url: https://github.com/vim-airline/vim-airline-themes
+      - name: ctrlp
+        url: https://tpope.io/vim/unimpaired.git
       - name: devicons
         url: https://github.com/ryanoasis/vim-devicons.git
       - name: floaterm
