@@ -1,0 +1,46 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+colorscheme solarized
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set number
+set relativenumber
+set hls
+set clipboard=unnamedplus
+set spell spelllang=en_us
+set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
+
+" Configuration vim Airline
+let g:airline_theme='solarized'
+let g:airlie_solarized_bg='dark'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+set laststatus=2
+
+" Silver Searcher
+if executable('ag') 
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
+nmap <silent> <RIGHT> :cnext<CR>
+nmap <silent> <LEFT> :cprev<CR>
+
+" Configuration NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Autostart NERDTree
+autocmd VimEnter * NERDTree
+
+" Configuration floaterm
+let g:floaterm_keymap_toggle = '<F12>'
+
+" splits
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
