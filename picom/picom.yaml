@@ -52,12 +52,12 @@
         dest: "{{ picom_src_dir }}"
         repo: "{{ picom_github_repo }}"
         track_submodules: yes
-    - name: Build meson picom
+    - name: Build picom with meson
       command: meson --buildtype=release . build
       args:
         chdir: "{{ picom_src_dir }}"
         creates: "{{ picom_src_dir }}/build/meson-private/build.dat"
-    - name: Build ninja picom
+    - name: Build picom with ninja
       command: ninja -C build
       args:
         chdir: "{{ picom_src_dir }}"
