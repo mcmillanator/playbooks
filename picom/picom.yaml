@@ -1,4 +1,4 @@
-- name: Install and configure KDE with i3wm
+- name: Install and picom
   hosts: localhost
   gather_facts: yes
   become: no
