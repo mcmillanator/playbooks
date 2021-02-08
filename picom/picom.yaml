@@ -7,6 +7,12 @@
     local_repo_dir: "{{ ansible_env.HOME }}/src"
     picom_src_dir: "{{ ansible_env.HOME }}/src/picom"
   tasks:
+    - name: Remove compton
+      package:
+        name:
+          - compton
+        state: absent
+      become: true
     - name: Install dependencies
       package:
         name:
