@@ -62,3 +62,9 @@
       args:
         chdir: "{{ picom_src_dir }}"
         creates: "{{ picom_src_dir }}/build/src/picom"
+    - name: Install picom with ninja
+      command: ninja -C build install
+      args:
+        chdir: "{{ picom_src_dir }}"
+        creates: /usr/local/bin/picom
+      become: yes
