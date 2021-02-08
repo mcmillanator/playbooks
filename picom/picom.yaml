@@ -3,34 +3,40 @@
   gather_facts: yes
   become: no
   vars:
-    picom_src_url: https://github.com/yshui/picom/archive/v8.2.zip
-    src_dir: "{{ ansible_env.HOME }}/src/"
+    picom_github_repo: https://github.com/yshui/picom.git
+    local_repo_dir: "{{ ansible_env.HOME }}/src"
+    picom_src_dir: "{{ ansible_env.HOME }}/src/picom"
   tasks:
     - name: Install dependencies
       package:
         name:
-          - libxext-dev
-          - libxcb1-dev
-          - libxcb-damage0-dev
-          - libxcb-xfixes0-dev
-          - libxcb-shape0-dev
-          - libxcb-render-util0-dev
-          - libxcb-render0-dev
-          - libxcb-randr0-dev
-          - libxcb-composite0-dev
-          - libxcb-image0-dev
-          - libxcb-present-dev
-          - libxcb-xinerama0-dev
-          - libxcb-glx0-dev
-          - libpixman-1-dev
-          - libdbus-1-dev
+          - asciidoc
+          - gcc
           - libconfig-dev
+          - libdbus-1-dev
+          - libev-dev
+          - libevdev-dev
           - libgl1-mesa-dev
           - libpcre2-dev
-          - libevdev-dev
-          - uthash-dev
-          - libev-dev
+          - libpixman-1-dev
           - libx11-xcb-dev
+          - libxcb1-dev
+          - libxcb-composite0-dev
+          - libxcb-damage0-dev
+          - libxcb-glx0-dev
+          - libxcb-image0-dev
+          - libxcb-present-dev
+          - libxcb-randr0-dev
+          - libxcb-render0-dev
+          - libxcb-render-util0-dev
+          - libxcb-shape0-dev
+          - libxcb-xfixes0-dev
+          - libxcb-xinerama0-dev
+          - libxext-dev
+          - meson
+          - uthash-dev
+          - build-essential
+          - libpcre++-dev
         state: present
       become: yes
     - name: Ensure directories exist
