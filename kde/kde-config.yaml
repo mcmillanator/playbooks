@@ -1,0 +1,30 @@
+- name: Install and configure KDE with i3wm
+  hosts: localhost
+  gather_facts: yes
+  become: no
+  vars:
+    i3_dir: "{{ ansible_env.HOME }}/.i3"
+    kde_dir: "{{ ansible_env.HOME }}/.config/plasma-workspace/env/"
+    kde_env_file: "{{ ansible_env.HOME }}/.config/plasma-workspace/env/wm.sh"
+  tasks:
+    - name: Install required packages
+      package:
+        name:
+          - kde-plasma-desktop
+          - i3-wm
+        state: present
+      become: yes
+    - name: Ensure directories exists
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0750
+      loop:
+        - "{{ kde_dir }}"
+        - "{{ i3_dir }}"
+    - name: Ensure config files in place
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: window-manager.sh, dest: "{{ kde_env_file }}" }
