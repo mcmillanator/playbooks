@@ -1,0 +1,20 @@
+- name: Install and configure KDE with i3wm
+  hosts: localhost
+  gather_facts: yes
+  become: no
+  vars:
+    picom_src_url: https://github.com/yshui/picom/archive/v8.2.zip
+    src_dir: "{{ ansible_env.HOME }}/src/"
+  tasks:
+    - name: Ensure directories exist
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0750
+      loop:
+        - "{{ src_dir }}"
+    - name: Download and unpack picom source
+      ansible.builtin.unarchive:
+        src: "{{ picom_src_url }}"
+        dest: "{{ src_dir }}"
+        remote_src: yes
