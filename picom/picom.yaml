@@ -45,9 +45,20 @@
         state: directory
         mode: 0750
       loop:
-        - "{{ src_dir }}"
-    - name: Download and unpack picom source
-      ansible.builtin.unarchive:
-        src: "{{ picom_src_url }}"
-        dest: "{{ src_dir }}"
-        remote_src: yes
+        - "{{ local_repo_dir }}"
+        - "{{ picom_src_dir }}"
+    - name: Clone picom
+      ansible.builtin.git:
+        dest: "{{ picom_src_dir }}"
+        repo: "{{ picom_github_repo }}"
+        track_submodules: yes
+    - name: Build meson picom
+      command: meson --buildtype=release . build
+      args:
+        chdir: "{{ picom_src_dir }}"
+        creates: "{{ picom_src_dir }}/build/meson-private/build.dat"
+    - name: Build ninja picom
+      command: ninja -C build
+      args:
+        chdir: "{{ picom_src_dir }}"
+        creates: "{{ picom_src_dir }}/build/src/picom"
