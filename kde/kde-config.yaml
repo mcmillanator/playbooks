@@ -10,8 +10,9 @@
     - name: Install required packages
       package:
         name:
-          - kde-plasma-desktop
+          - dmenu
           - i3-wm
+          - kde-plasma-desktop
         state: present
       become: yes
     - name: Ensure directories exists
