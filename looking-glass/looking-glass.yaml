@@ -7,7 +7,8 @@
     git_url: "https://github.com/gnif/LookingGlass.git"
     src_dir: "{{ ansible_env.HOME }}/src/looking-glass"
     built_bin: "{{ build_dir }}/looking-glass-client"
-    installed_bin: "/usr/local/bin/looking-glass-client" 
+    installed_bin: "/usr/local/bin/looking-glass-client"
+    build_tag: "B2-0-g76710ef201"
   tasks:
     - name: Install required packages
       become: yes
@@ -30,6 +31,7 @@
         repo: "{{ git_url }}"
         clone: yes
         update: yes
+        version: "{{ build_tag }}"
     - name: Ensure directories exist
       file:
         path: "{{ item }}"
