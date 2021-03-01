@@ -11,6 +11,7 @@
       package:
         name:
           - dmenu
+          - i3status
           - i3-wm
           - kde-plasma-desktop
         state: present
