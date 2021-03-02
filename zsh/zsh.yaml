@@ -6,6 +6,7 @@
     zshrc: "{{ ansible_env.HOME }}/.zshrc"
     oh_my_zsh_dir: "{{ ansible_env.HOME }}/.oh-my-zsh"
     oh_my_zsh_repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+    custom_path: "{{ oh_my_zsh_dir }}/custom"
   tasks:
     - name: Install zsh
       package:
@@ -24,10 +25,13 @@
       ansible.builtin.git:
         dest: "{{ oh_my_zsh_dir }}"
         repo: "{{ oh_my_zsh_repo }}"
-    - name: Copy zshrc
+    - name: Copy files
       copy:
-        src: zshrc
-        dest: "{{ zshrc }}"
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: aliases.zsh, dest: "{{ custom_path }}" }
+        - { src: zshrc, dest: "{{ zshrc }}" }
     - name: Install oh-my-zsh
       command: curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
       args:
