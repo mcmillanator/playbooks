@@ -1,9 +1,21 @@
----
 - name: Install and configure git
   hosts: localhost
   gather_facts: yes
   become: no
-
+  vars:
+     home: "{{ ansible_env.HOME }}"
   tasks:
-  - name: Install git
-
+    - name: Install git
+      package:
+        name:
+          - git
+        state: present
+      become: yes
+    - name: Copy configs
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: gitconfig, dest: "{{ home }}/.gitconfig" }
+        - { src: gitignore_global, dest: "{{ home }}/.gitignore_global" }
+        - { src: git_template, dest: "{{ home }}/.git_template" }
