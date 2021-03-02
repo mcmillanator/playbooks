@@ -1,0 +1,13 @@
+[color]
+	ui = true
+[user]
+	name = mcmillanator 
+	email = stan@stanleymcmillan.com 
+[core]
+	excludesfile = ~/.gitignore_global
+[merge "ours"]
+	driver = true
+[push]
+	default = simple
+[init]
+	templatedir = ~/.git_template
