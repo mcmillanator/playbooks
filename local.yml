@@ -1,3 +1,4 @@
 ---
 - hosts: all
-- import_playbook: vim/vim.yaml
+- name: Include vim
+  import_playbook: playbooks/vim.yaml
