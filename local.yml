@@ -1,4 +1,11 @@
 ---
 - hosts: all
 - name: Include vim
+  import_playbook: playbooks/brave/brave.yaml
+  import_playbook: playbooks/git/git.yaml
+  import_playbook: playbooks/kde/kde.yaml
+  import_playbook: playbooks/looking-glass/looking-glass.yaml
+  import_playbook: playbooks/picom/picom.yaml
+  import_playbook: playbooks/tmux/tmux.yaml
   import_playbook: playbooks/vim/vim.yaml
+  import_playbook: playbooks/zsh/zsh.yaml
