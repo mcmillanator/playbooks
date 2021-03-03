@@ -10,6 +10,7 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 ## VMS
 * Windows 10
 ## Packages
+* feh
 * qemu
 * virt-manager
 * docker
