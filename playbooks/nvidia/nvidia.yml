@@ -1,0 +1,26 @@
+---
+- name: Install nvidia drivers
+  hosts: localhost
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Disable Nouveau
+      ansible.builtin.copy:
+        src: disable-nouveau.conf
+        dest: /etc/modprobe.d/disable-nouveau.conf
+        owner: root
+        group: root
+        mode: '0600'
+    - name: Get linux version
+      command: uname -r
+      register: linux_version
+    - name: Update initramfs
+      command: update-initramfs -u -k {{ linux_version.stdout }}
+    - name: Update grub
+      command: update-grub
+    - name: Fix tearing
+      cron:
+        name: force nvidia full composition
+        special_time: reboot
+        state: present
+        job: nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
