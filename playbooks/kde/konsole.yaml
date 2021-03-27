@@ -25,7 +25,6 @@
       copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
-        state: present
       loop:
         - { src: konsolerc, dest: "{{ konsolerc }}" }
         - { src: Soloraized.profile, dest: "{{ soloraized }}" }
