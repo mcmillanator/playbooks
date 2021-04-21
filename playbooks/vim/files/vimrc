@@ -69,3 +69,9 @@ nnoremap <C-H> <C-W><C-H>
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" ALE
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]W <Plug>(ale_last)
+nmap <silent> ]w <Plug>(ale_next)
