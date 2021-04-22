@@ -12,9 +12,15 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 * virt-manager
 * docker
 * docker-compose
-## Services
+## Gems
+* tmuxinator
+## Services & Servers
 * dockerd
 * libvirtd
 * openssh-server
+* postgresql
+* rabbitmq
+* redis
 ## Configs
 * pulse audio sample rate
+* https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers
