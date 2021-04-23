@@ -76,3 +76,6 @@ nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]W <Plug>(ale_last)
 nmap <silent> ]w <Plug>(ale_next)
+
+" vim-test
+let test#strategy = 'dispatch'
