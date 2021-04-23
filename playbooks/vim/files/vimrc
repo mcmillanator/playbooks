@@ -55,6 +55,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Configuration NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+let NERDTreeShowLineNumbers=1
 
 " Configuration floaterm
 let g:floaterm_keymap_toggle = '<F12>'
