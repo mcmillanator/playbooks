@@ -52,6 +52,8 @@
         url: https://github.com/ctrlpvim/ctrlp.vim.git
       - name: devicons
         url: https://github.com/ryanoasis/vim-devicons.git
+      - name: dispatch
+        url: https://github.com/tpope/vim-dispatch.git
       - name: floaterm
         url: https://github.com/voldikss/vim-floaterm
       - name: nerdtree
@@ -62,6 +64,10 @@
         url: https://github.com/altercation/vim-colors-solarized.git
       - name: uninpaired
         url: https://tpope.io/vim/unimpaired.git
+      - name: vim-ruby
+        url: https://github.com/vim-ruby/vim-ruby
+      - name: vim-test
+        url: https://github.com/janko-m/vim-test.git
     - name: Ensure .vimrc config in place
       copy:
         src: vimrc
