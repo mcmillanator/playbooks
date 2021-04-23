@@ -56,25 +56,13 @@ plugins=(catimg
 # use multiple identities with ssh-agent by listing them here
 zstyle :omz:plugins:ssh-agent identities id
 
+# tmux options
+ZSH_TMUX_AUTOSTART='true'
+ZSH_TMUX_AUTOCONNECT='false'
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Preferred editor
-export EDITOR='vim'
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
-# Source chruby
-source /usr/local/share/chruby/chruby.sh
-# Switch to ruby 2.6.3
-chruby 2.6.3
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
