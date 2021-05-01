@@ -12,6 +12,7 @@
           - i3blocks
           - i3status
           - i3-wm
+          - playerctl
         state: present
       become: yes
     - name: Ensure directories exist
