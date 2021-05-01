@@ -12,8 +12,6 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 * virt-manager
 * docker
 * docker-compose
-## Gems
-* tmuxinator
 ## Services & Servers
 * dockerd
 * libvirtd
@@ -24,3 +22,9 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 ## Configs
 * pulse audio sample rate
 * https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers
+## Ruby
+### Gems
+* tmuxinator
+### Guard
+* BUNDLER_GEMFILE=~/.guard/Gemfile
+* guard -G ~/.guard.rb
