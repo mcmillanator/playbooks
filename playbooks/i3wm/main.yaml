@@ -14,7 +14,7 @@
           - i3-wm
         state: present
       become: yes
-    - name: Ensure directories exists
+    - name: Ensure directories exist
       file:
         path: "{{ item }}"
         state: directory
