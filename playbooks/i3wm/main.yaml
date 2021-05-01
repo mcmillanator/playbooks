@@ -28,3 +28,13 @@
         backup: yes
       loop:
         - { src: .i3, dest: "{{ ansible_env.HOME }}" }
+    - name: Clone i3blocks-contrib
+      git:
+        dest: "{{ i3_dir }}/{{ item.name }}"
+        repo: "{{ item.url }}"
+        clone: yes
+        update: yes
+        recursive: no
+      loop:
+      - name: i3blocks-contrib
+        url: https://github.com/vivien/i3blocks-contrib
