@@ -9,9 +9,13 @@
       package:
         name:
           - dmenu
+          - feh
           - i3blocks
           - i3status
           - i3-wm
+          - libnotify-bin
+          - notify-osd
+          - playerctl
         state: present
       become: yes
     - name: Ensure directories exist
