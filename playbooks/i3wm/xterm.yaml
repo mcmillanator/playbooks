@@ -1,0 +1,30 @@
+- name: Configure xterm
+  hosts: localhost
+  gather_facts: yes
+  become: no
+  vars:
+    config_dir: "{{ ansible_env.HOME }}/.xenv"
+    Xfile: "{{ ansible_env.HOME }}/.Xdefaults"
+  tasks:
+    - name: Install required packages
+      package:
+        name:
+          - xterm
+        state: present
+      become: yes
+    - name: Ensure directories exist
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0750
+      loop:
+        - "{{ config_dir }}"
+    - name: Ensure config files in place
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - { src: .Xdefaults, dest: "{{ Xfile }}" }
+        - { src: .xenv/solar.dark, dest: "{{ config_dir }}" }
+    - name: Load X config
+      command: xrdb -load "{{ Xfile }}"

@@ -57,7 +57,7 @@ font pango:Hack 16
 floating_modifier $ctrl
 
 # start a terminal
-bindsym $ctrl+Return exec i3-sensible-terminal
+bindsym $ctrl+Return exec xterm #i3-sensible-terminal
 
 # kill focused window
 bindsym $ctrl+Shift+q kill
