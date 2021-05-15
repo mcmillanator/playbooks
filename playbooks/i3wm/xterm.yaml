@@ -27,4 +27,4 @@
         - { src: .Xdefaults, dest: "{{ Xfile }}" }
         - { src: .xenv/solar.dark, dest: "{{ config_dir }}" }
     - name: Load X config
-      command: xrdb -load "{{ Xfile }}"
+      command: xrdb -merge "{{ Xfile }}"
