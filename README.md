@@ -12,8 +12,13 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 * virt-manager
 * docker
 * docker-compose
+### Developer Packages
+* jq
+* universal-ctags
+* xclip
 ## Services & Servers
 * dockerd
+* elastic search
 * libvirtd
 * openssh-server
 * postgresql
