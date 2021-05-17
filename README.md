@@ -1,22 +1,27 @@
 # Quick Start
-ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 
-# TODO
-## User Groups
+ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
+
+## TODO
+
+### User Groups
+
 * libvirt-qemu
 * docker
-## VMS
+
+### VMS
+
 * Windows 10
-## Packages
+
+### Packages
+
 * qemu
 * virt-manager
 * docker
 * docker-compose
-### Developer Packages
-* jq
-* universal-ctags
-* xclip
-## Services & Servers
+
+### Services & Servers
+
 * dockerd
 * elastic search
 * libvirtd
@@ -24,12 +29,19 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 * postgresql
 * rabbitmq
 * redis
-## Configs
+
+### Configs
+
 * pulse audio sample rate
-* https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers
-## Ruby
-### Gems
+* <https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers>
+
+### Ruby
+
+#### Gems
+
 * tmuxinator
-### Guard
+
+#### Guard
+
 * BUNDLER_GEMFILE=~/.guard/Gemfile
 * guard -G ~/.guard.rb
