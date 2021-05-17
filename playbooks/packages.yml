@@ -1,0 +1,14 @@
+---
+- name: Install main packages
+  hosts: localhost
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Install packages
+      package:
+        name:
+          - digikam
+          - jq
+          - feh
+          - xclip
+        state: present
