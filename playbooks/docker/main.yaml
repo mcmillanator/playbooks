@@ -1,0 +1,22 @@
+- name: Install and configure docker
+  hosts: localhost
+  gather_facts: yes
+  become: no
+  tasks:
+    - name: Import a key from a url
+      rpm_key:
+        state: present
+        key: https://download.docker.com/linux/ubuntu/gpg
+    - name: Install required packages
+      package:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+      become: yes
