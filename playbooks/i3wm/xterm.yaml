@@ -26,5 +26,6 @@
       loop:
         - { src: .Xdefaults, dest: "{{ Xfile }}" }
         - { src: .xenv/solar.dark, dest: "{{ config_dir }}" }
+        - { src: .dircolors, dest: "{{ ansible_env.HOME }}" }
     - name: Load X config
       command: xrdb -merge "{{ Xfile }}"
