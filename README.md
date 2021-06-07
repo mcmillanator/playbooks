@@ -1,13 +1,7 @@
 # Quick Start
-<<<<<<< HEAD
 
 ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
 
-=======
-
-ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
-
->>>>>>> lint: markdown lint
 ## TODO
 
 ### User Groups
@@ -23,26 +17,12 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 
 * qemu
 * virt-manager
-<<<<<<< HEAD
 * docker
 * docker-compose
 
 ### Services & Servers
 
 * dockerd
-=======
-
-#### Developer Packages
-
-* jq
-* universal-ctags
-* xclip
-
-### Services & Servers
-
-* docker
-* docker-compose
->>>>>>> lint: markdown lint
 * elastic search
 * libvirtd
 * openssh-server
@@ -53,22 +33,12 @@ ansible-pull --url https://github.com/mcmillanator/playbooks.git zsh/zsh.yaml
 ### Configs
 
 * pulse audio sample rate
-<<<<<<< HEAD
 * <https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers>
-=======
-* [Guard - inotify-watchers](https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers)
->>>>>>> lint: markdown lint
 
 ### Ruby
 
 #### Gems
 
-<<<<<<< HEAD
-=======
-* rubocop
-* ruby-debug-ide
-* solargraph
->>>>>>> lint: markdown lint
 * tmuxinator
 
 #### Guard
