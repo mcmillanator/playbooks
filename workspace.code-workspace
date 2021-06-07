@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "playbooks/brave"
+		},
+		{
+			"path": "playbooks/git"
+		},
+		{
+			"path": "playbooks/i3wm"
+		},
+		{
+			"path": "playbooks/looking-glass"
+		},
+		{
+			"path": "playbooks/nvidia"
+		},
+		{
+			"path": "playbooks/picom"
+		},
+		{
+			"path": "playbooks/ruby"
+		},
+		{
+			"path": "playbooks/tmux"
+		},
+		{
+			"path": "playbooks/vim"
+		},
+		{
+			"path": "playbooks/vms"
+		},
+		{
+			"path": "playbooks/zsh"
+		}
+	],
+	"settings": {}
+}
