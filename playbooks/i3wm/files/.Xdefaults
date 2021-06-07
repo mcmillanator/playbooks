@@ -2,7 +2,8 @@
 XTerm*selectToClipboard: true
 !font
 XTerm*faceName: Hack Nerd Font
-XTerm*faceSize: 9
+XTerm*faceSize: 12
 XTerm*renderFont: true
 
 #include "/home/stan/.xenv/solar.dark"
+#include "/home/stan/.dircolors"
