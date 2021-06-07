@@ -79,6 +79,7 @@ build-iPhoneSimulator/
 capybara-*.html
 .rspec
 /log
+*.log
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -113,3 +114,6 @@ bower.json
 
 # Ignore vim session file
 Session.vim
+
+# Ignore vscode files
+.vscode
