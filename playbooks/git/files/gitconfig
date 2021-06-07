@@ -5,6 +5,7 @@
 	email = stan@stanleymcmillan.com 
 [core]
 	excludesfile = ~/.gitignore_global
+	hooksPath = /home/stan/.git_template/hooks
 [merge "ours"]
 	driver = true
 [push]

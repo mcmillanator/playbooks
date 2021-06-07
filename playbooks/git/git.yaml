@@ -18,4 +18,4 @@
       loop:
         - { src: gitconfig, dest: "{{ home }}/.gitconfig" }
         - { src: gitignore_global, dest: "{{ home }}/.gitignore_global" }
-        - { src: git_template, dest: "{{ home }}/.git_template" }
+        - { src: git_template/hooks, dest: "{{ home }}/.git_template" }
