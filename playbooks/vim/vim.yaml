@@ -64,6 +64,8 @@
         url: https://github.com/altercation/vim-colors-solarized.git
       - name: uninpaired
         url: https://tpope.io/vim/unimpaired.git
+      - name: vim-easymotion
+        url: https://github.com/asvetliakov/vim-easymotioBn.git
       - name: vim-ruby
         url: https://github.com/vim-ruby/vim-ruby
       - name: vim-test
