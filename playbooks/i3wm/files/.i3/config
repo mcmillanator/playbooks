@@ -255,3 +255,4 @@ set $email workspace email
 bindsym $super+e exec --no-startup-id ~/.i3/scripts/workspace.sh email -s "brave-browser firefox"
 bindsym $alt+$super+e move container to $email
 
+exec xrandr --output HDMI-0 --mode 1920x1080 --primary --output VGA-0 --mode 1920x1080 --right-of HDMI-0
