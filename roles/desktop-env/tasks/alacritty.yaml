@@ -1,0 +1,20 @@
+- name: Install and configure alacritty
+  package:
+    name:
+      alacritty
+    state: present
+  become: yes
+- name: Ensure directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ alacritty_dir }}"
+- name: Ensure config files are in place
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    backup: yes
+  loop:
+    - { src: alacritty/alacritty.yml, dest: "{{ alacritty_dir }}/.alacritty.yml" }

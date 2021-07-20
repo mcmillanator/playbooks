@@ -1,1 +1,2 @@
 sway_dir: "{{ ansible_env.HOME }}/.config/sway"
+alacritty_dir: "{{ ansible_env.HOME }}/"

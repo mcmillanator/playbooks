@@ -1,2 +1,4 @@
-- name: Install the desktop environment
+- name: Install and configure the desktop environment
   import_tasks: sway.yaml
+- name: Install and configure alacritty terminal emulator
+  import_tasks: alacritty.yaml

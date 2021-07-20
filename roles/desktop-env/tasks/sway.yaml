@@ -1,7 +1,7 @@
 - name: Install required packages
   package:
     name:
-      alacritty, dmenu, sway
+      dmenu, sway
     state: present
   become: yes
 - name: Ensure directories exist
