@@ -1,7 +1,7 @@
 - name: Install required packages
   package:
     name:
-      dmenu, sway
+      dmenu, sway, swayidle
     state: present
   become: yes
 - name: Ensure directories exist
