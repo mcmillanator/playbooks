@@ -1,0 +1,48 @@
+- name: Install dependencies
+  become: yes
+  package:
+    name:
+      binutils-dev,
+      cmake,
+      fonts-freefont-ttf,
+      libfontconfig1-dev,
+      libsdl2-dev,
+      libsdl2-ttf-dev,
+      libspice-protocol-dev,
+      libx11-dev,
+      nettle-dev,
+      wayland-protocols
+    state: present
+- name: Clone git repo
+  git:
+    dest: "{{ looking_glass_src_dir }}"
+    repo: "{{ git_url }}"
+    clone: yes
+    update: yes
+    version: "{{ build_tag }}"
+- name: Ensure directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ looking_glass_build_dir }}"
+- name: cmake looking glass
+  command: cmake ../
+  args:
+    chdir: "{{ looking_glass_build_dir }}"
+    creates: "{{ looking_glass_build_dir }}/cmake_install.cmake"
+- name: make looking glass
+  command: make
+  args:
+    chdir: "{{ looking_glass_build_dir }}"
+    creates: "{{ built_bin }}"
+- name: install looking glass
+  become: yes
+  ansible.builtin.file:
+    src: "{{ built_bin }}"
+    dest: "{{ installed_bin }}"
+    owner: root
+    group: root
+    state: link
+    mode: 0755

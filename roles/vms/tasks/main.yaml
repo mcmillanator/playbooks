@@ -2,3 +2,9 @@
   tags: qemu, vms
   import_tasks: qemu.yaml
   become: yes
+- name: Looking Glass
+  tags: vms
+  import_tasks: looking-glass.yaml
+- name: IVSHMEM
+  tags: vms
+  import_tasks: ivshmem.yaml
