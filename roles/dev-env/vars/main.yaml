@@ -2,3 +2,4 @@ vim_dir: "{{ ansible_env.HOME }}/.vim"
 vimrc: "{{ ansible_env.HOME }}/.vimrc"
 # src_dir is used for downloading source files to compile code
 src_dir: "{{ ansible_env.HOME }}/.src"
+home: "{{ ansible_env.HOME }}"

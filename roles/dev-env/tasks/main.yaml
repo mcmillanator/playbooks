@@ -4,3 +4,6 @@
 - name: Install chruby and ruby-install
   tags: ruby
   import_tasks: ruby.yaml
+- name: Install and configure git
+  tags: git
+  import_tasks: git.yaml
