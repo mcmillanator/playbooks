@@ -7,3 +7,6 @@
 - name: Install and configure git
   tags: git
   import_tasks: git.yaml
+- name: Install qmk
+  tags: qmk, keybaord
+  import_tasks: qmk.yaml

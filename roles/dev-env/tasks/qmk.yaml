@@ -1,0 +1,24 @@
+- name: Install required packages
+  package:
+    name: git, python3-pip
+    state: present
+  become: yes
+- name: Install QMK via pip
+  pip:
+    name: "{{ item }}"
+    extra_args: --user
+  loop:
+    - "qmk"
+- name: Ensure oh my zsh directories exists
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ omz_dir }}"
+- name: Ensure qmk zsh env file is in place
+  copy:
+    src: qmk/qmk.zsh
+    dest: "{{ omz_dir }}/qmk.zsh"
+    backup: yes
+    mode: 0640
