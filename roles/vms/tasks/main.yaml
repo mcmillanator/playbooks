@@ -1,0 +1,4 @@
+- name: QEMU
+  tags: qemu, vms
+  import_tasks: qemu.yaml
+  become: yes

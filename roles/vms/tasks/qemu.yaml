@@ -1,0 +1,23 @@
+- name: Install qemu
+  package:
+    name: qemu
+    state: present
+
+- name: Append groups to user
+  user:
+    name: "{{ username }}"
+    groups: 
+      - kvm
+      - libvirt
+      - qemu
+    append: yes
+
+- name: Ensure grub loads iommu
+  copy:
+    src: grub
+    dest: /etc/default/grub
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
+  notify: Update grub

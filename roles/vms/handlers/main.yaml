@@ -1,0 +1,3 @@
+- name: Update grub
+  command: grubby --grub2
+  become: yes
