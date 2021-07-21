@@ -1,4 +1,5 @@
 - name: Install and configure vim
+  tags: vim
   import_tasks: vim.yaml
 - name: Install chruby and ruby-install
   tags: ruby
