@@ -13,3 +13,6 @@
 - name: Install docker
   tags: docker
   import_tasks: docker.yaml
+- name: SSH
+  tags: ssh
+  import_tasks: ssh.yaml

@@ -1,0 +1,12 @@
+- name: Install ssh client and server
+  package:
+    name: openssh, openssh-server
+    state: present
+  become: yes
+
+- name: Enable ssh service
+  systemd:
+    state: started
+    name: sshd
+    enabled: yes
+  become: yes
