@@ -1,13 +1,8 @@
 # Quick Start
 
-ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
+ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml
 
 ## TODO
-
-### User Groups
-
-* libvirt-qemu
-* docker
 
 ### VMS
 
@@ -15,17 +10,12 @@ ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
 
 ### Packages
 
-* qemu
-* virt-manager
-* docker
 * docker-compose
+* vscode
 
 ### Services & Servers
 
-* dockerd
 * elastic search
-* libvirtd
-* openssh-server
 * postgresql
 * rabbitmq
 * redis
