@@ -1,0 +1,5 @@
+- name: Install Brave
+  package:
+   name: brave-browser
+   state: present
+  become: yes

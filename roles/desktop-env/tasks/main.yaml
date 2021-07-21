@@ -10,3 +10,6 @@
 - name: Install and configure tmux
   tags: tmux, terminal
   import_tasks: tmux.yaml
+- name: Brave
+  tags: web, browser
+  import_tasks: brave.yaml
