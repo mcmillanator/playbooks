@@ -1,0 +1,16 @@
+- name: Installing tmux
+  package:
+    name: gawk, perl, tmux
+    state: present
+  become: yes
+- name: Clone Oh my tmux
+  ansible.builtin.git:
+    repo: 'https://github.com/gpakosz/.tmux.git'
+    dest: "{{ tmux_dir }}"
+- name: Copy config
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - { src: "{{ tmux_dir }}/.tmux.conf", dest: "{{ home }}/.tmux.conf" }
+    - { src: tmux/tmux.conf.local, dest: "{{ home }}/.tmux.conf.local" }
