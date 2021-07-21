@@ -1,0 +1,31 @@
+- name: Install zsh
+  package:
+    name: zsh
+    state: present
+  become: yes
+- name: Ensure directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ oh_my_zsh_dir }}"
+- name: Clone oh-my-zsh
+  ansible.builtin.git:
+    dest: "{{ oh_my_zsh_dir }}"
+    repo: "{{ oh_my_zsh_repo }}"
+- name: Copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - { src: zsh/aliases.zsh, dest: "{{ zsh_custom_path }}" }
+    - { src: zsh/chruby.zsh, dest: "{{ zsh_custom_path }}" }
+    - { src: zsh/env.zsh, dest: "{{ zsh_custom_path }}" }
+    - { src: zsh/nvm.zsh, dest: "{{ zsh_custom_path }}" }
+    - { src: zsh/zshrc, dest: "{{ zshrc }}" }
+- name: Install oh-my-zsh
+  command: curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+  args:
+    creates: "{{ oh_my_zsh_dir }}"
+  become: yes

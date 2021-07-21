@@ -1,4 +1,9 @@
 - name: Install and configure the desktop environment
+  tags: sway, gui, desktop-env
   import_tasks: sway.yaml
 - name: Install and configure alacritty terminal emulator
+  tags: alacritty, terminal
   import_tasks: alacritty.yaml
+- name: Install and configure zsh
+  tags: zsh, terminal
+  import_tasks: zsh.yaml
