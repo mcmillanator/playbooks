@@ -10,3 +10,6 @@
 - name: Install qmk
   tags: qmk, keybaord
   import_tasks: qmk.yaml
+- name: Install docker
+  tags: docker
+  import_tasks: docker.yaml

@@ -1,0 +1,38 @@
+- name: Install dnf-plugins-core
+  dnf:
+    name: dnf-plugins-core
+    state: present
+  become: yes
+
+- name: Add docker repo
+  shell: 'dnf config-manager \
+    --add-repo \
+        https://download.docker.com/linux/fedora/docker-ce.repo'
+  become: yes
+
+- name: Install docker
+  package:
+    name: docker-ce, docker-ce-cli, containerd.io
+    state: present
+  become: yes
+    
+- name: Enable docker service
+  systemd:
+    state: started
+    name: docker
+    enabled: yes
+  become: yes
+    
+- name: Add docker group
+  group:
+    name: docker
+    state: present
+      
+- name: Add user to docker group
+  user:
+    name: '{{ username }}'
+    append: yes
+    groups: 
+      - docker
+    state: present
+  become: yes
