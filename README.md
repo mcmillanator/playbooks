@@ -1,4 +1,9 @@
-# Quick Start
+# About
+
+This is my ansible playbook collection.  I use ansible for basic configuration of my personal computer(s) at home.
+No consideration has been given to use by other people.
+
+## Quick Start
 
 ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml
 
