@@ -16,6 +16,13 @@ set $down j
 set $up k
 set $right l
 
+# Window borders
+default_border pixel 1
+default_floating_border normal
+hide_edge_borders smart
+
+gaps inner 10
+
 # Your preferred terminal emulator
 set $term alacritty
 
@@ -201,7 +208,7 @@ bindsym $alt+$super+0 move container to $workspace10
     bindsym $super+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $super+Shift+space floating toggle
+    bindsym $super+$ctrl+f floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $super+space focus mode_toggle
@@ -244,18 +251,7 @@ bindsym $super+$alt+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /etc/sway/config.d/*
+
+exec_always pkill waybar ; sleep 1 ; waybar
