@@ -26,13 +26,3 @@
     mode: 0700
   loop:
     - { src: sway/scripts, dest: "{{ sway_dir }}" }
-- name: Clone i3blocks-contrib
-  git:
-    dest: "{{ sway_dir }}/{{ item.name }}"
-    repo: "{{ item.url }}"
-    clone: yes
-    update: yes
-    recursive: no
-  loop:
-  - name: i3blocks-contrib
-    url: https:/github.com/vivien/i3blocks-contrib
