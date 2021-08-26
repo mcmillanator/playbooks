@@ -1,6 +1,6 @@
 - name: Install required packages
   package:
-    name: git, the_silver_searcher
+    name: vim, git, the_silver_searcher
     state: present
   become: yes
 - name: Ensure .vim/ directories exists
