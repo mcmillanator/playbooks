@@ -18,11 +18,13 @@
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
+    backup: yes
   loop:
     - { src: zsh/aliases.zsh, dest: "{{ zsh_custom_path }}" }
     - { src: zsh/chruby.zsh, dest: "{{ zsh_custom_path }}" }
     - { src: zsh/env.zsh, dest: "{{ zsh_custom_path }}" }
     - { src: zsh/nvm.zsh, dest: "{{ zsh_custom_path }}" }
+    - { src: zsh/agnoster.zsh-theme, dest: "{{ zsh_custom_path }}/themes" }
     - { src: zsh/zshrc, dest: "{{ zshrc }}" }
 - name: Install oh-my-zsh
   command: curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
