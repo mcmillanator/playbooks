@@ -10,3 +10,10 @@
     name: sshd
     enabled: yes
   become: yes
+
+- name: Copy authorized keys from github
+  get_url:
+    mode: '0600'
+    backup: yes
+    dest: "{{ home }}/.ssh/authorized_keys"
+    url: https://github.com/mcmillanator.keys
