@@ -1,6 +1,9 @@
 - name: Install qemu
   package:
-    name: qemu
+    name:
+      driverctl,
+      qemu,
+      @virtualization
     state: present
 
 - name: Append groups to user
@@ -21,3 +24,23 @@
     group: root
     mode: 0644
   notify: Update grub
+
+- name: Ensure dracut loads vfio
+  copy:
+    src: vfio.conf 
+    dest: /etc/dracut.conf.d/vfio.conf
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
+  notify: Update dracut
+
+- name: Copy vfio-pci-override.sh
+  copy:
+    src: vfio-pci-override.sh
+    dest: /usr/sbin/vfio-pci-override.sh
+    backup: yes
+    owner: root
+    group: root
+    mode: 0755
+  notify: Update dracut
