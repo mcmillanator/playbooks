@@ -10,3 +10,5 @@ alias ll='ls -lah'
 
 # ruby
 alias be='bundle exec $@'
+
+alias win10='sudo /home/stan/Documents/Projects/virtual_machines/windows10vm.sh'
