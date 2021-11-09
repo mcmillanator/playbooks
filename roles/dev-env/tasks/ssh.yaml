@@ -1,6 +1,6 @@
 - name: Install ssh client and server
   package:
-    name: openssh, openssh-server
+    name: openssh-server
     state: present
   become: yes
 
