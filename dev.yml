@@ -1,4 +1,4 @@
 ---
-- hosts: localhost
+- hosts: workstation
   roles:
     - dev-env
