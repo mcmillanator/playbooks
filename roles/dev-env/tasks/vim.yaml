@@ -1,6 +1,6 @@
 - name: Install required packages
   package:
-    name: vim, git, the_silver_searcher
+    name: vim, git, silversearcher-ag
     state: present
   become: yes
 - name: Ensure .vim/ directories exists
@@ -33,9 +33,9 @@
     recursive: no
   loop:
   - name: airline
-    url: https://github.com/vim-airline/vim-airline
+    url: https://github.com/vim-airline/vim-airline.git
   - name: airline-themes
-    url: https://github.com/vim-airline/vim-airline-themes
+    url: https://github.com/vim-airline/vim-airline-themes.git
   - name: ALE
     url: https://github.com/dense-analysis/ale.git
   - name: ctrlp
@@ -45,19 +45,21 @@
   - name: dispatch
     url: https://github.com/tpope/vim-dispatch.git
   - name: floaterm
-    url: https://github.com/voldikss/vim-floaterm
+    url: https://github.com/voldikss/vim-floaterm.git
   - name: nerdtree
-    url: https://github.com/preservim/nerdtree
+    url: https://github.com/preservim/nerdtree.git
   - name: nerdtree-git-plugin
     url: https://github.com/Xuyuanp/nerdtree-git-plugin.git
   - name: solarized
     url: https://github.com/altercation/vim-colors-solarized.git
   - name: uninpaired
     url: https://tpope.io/vim/unimpaired.git
-#  - name: vim-easymotion
-#    url: https://github.com/asvetliakov/vim-easymotioBn.git
+  - name: vim-easymotion
+    url: https://github.com/asvetliakov/vim-easymotion.git
+  - name: vim-fugitive
+    url: https://github.com/tpope/vim-fugitive.git
   - name: vim-ruby
-    url: https://github.com/vim-ruby/vim-ruby
+    url: https://github.com/vim-ruby/vim-ruby.git
   - name: vim-test
     url: https://github.com/janko-m/vim-test.git
 - name: Ensure .vimrc config in place
