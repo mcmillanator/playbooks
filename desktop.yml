@@ -1,4 +1,4 @@
 ---
-- hosts: localhost
+- hosts: gaming,server,workstation
   roles:
     - desktop-env
