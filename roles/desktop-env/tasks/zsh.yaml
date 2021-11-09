@@ -1,6 +1,6 @@
 - name: Install zsh
   package:
-    name: zsh
+    name: zsh, git
     state: present
   become: yes
 - name: Ensure directories exist
