@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: server
   roles:
     - nas
   become: yes
