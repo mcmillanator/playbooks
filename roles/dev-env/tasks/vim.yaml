@@ -1,6 +1,11 @@
 - name: Install required packages
   package:
-    name: vim, git, silversearcher-ag
+    name:
+      - git
+      # grip is a github markdown server useful for markdown previews in the browser
+      - grip
+      - silversearcher-ag
+      - vim
     state: present
   become: yes
 - name: Ensure .vim/ directories exists
@@ -19,6 +24,7 @@
     dest: /usr/share/fonts/
     list_files: true 
     remote_src: yes
+    creates: "/usr/share/fonts/Hack Regular Nerd Font Complete.ttf"
   become: yes
 - name: Ensure Pathogen is in place
   get_url:
