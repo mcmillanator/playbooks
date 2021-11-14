@@ -11,6 +11,12 @@
     enabled: yes
   become: yes
 
+- name: Ensure .ssh exist
+  file:
+    path: "{{ home }}/.ssh"
+    state: directory
+    mode: 0700
+
 - name: Copy authorized keys from github
   get_url:
     mode: '0600'

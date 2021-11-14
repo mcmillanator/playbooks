@@ -7,12 +7,16 @@
 - name: Install and configure git
   tags: git
   import_tasks: git.yaml
-- name: Install qmk
-  tags: qmk, keybaord
-  import_tasks: qmk.yaml
+    #- name: Install qmk
+    #  tags: qmk, keybaord
+    #  import_tasks: qmk.yaml
 - name: Install docker
   tags: docker
+  become: yes
   import_tasks: docker.yaml
 - name: SSH
   tags: ssh
   import_tasks: ssh.yaml
+- name: mkcert
+  tags: mkcert
+  import_tasks: mkcert.yaml

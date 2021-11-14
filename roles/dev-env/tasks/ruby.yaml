@@ -13,6 +13,9 @@
     clone: yes
     update: yes
     recursive: no
+  notify:
+    - Install ruby-install
+    - Install chruby
   loop:
   - name: ruby-install
     url: https://github.com/postmodern/ruby-install.git

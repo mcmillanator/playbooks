@@ -1,0 +1,11 @@
+- name: Install chruby
+  command: ./scripts/setup.sh
+  args:
+    chdir: "{{ src_dir }}/chruby"
+    creates: /usr/local//share/chruby/chruby.sh
+  become: yes
+- name: Install ruby-install 
+  command: ./setup.sh
+  args:
+    chdir: "{{ src_dir }}/ruby-install"
+  become: yes
