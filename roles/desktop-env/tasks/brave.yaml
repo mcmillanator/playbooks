@@ -1,5 +1,27 @@
-- name: Install Brave
+- name: Install Brave deps
   package:
-   name: brave-browser
-   state: present
-  become: yes
+    name:
+      - apt-transport-https
+      - curl
+    state: present
+
+- name: Add pgp key
+  ansible.builtin.get_url:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    dest: "/usr/share/keyrings/brave-browser-archive-keyring.gpg"
+
+- name: Add Brave Repository
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
+    state: present
+
+- name: Update apt
+  ansible.builtin.apt:
+    update_cache: yes
+    force_apt_get: yes
+
+- name: Install brave
+  package:
+    name:
+      - brave-browser
+    state: present

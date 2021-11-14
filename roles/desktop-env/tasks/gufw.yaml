@@ -1,0 +1,5 @@
+- name: Installing gufw
+  package:
+    name: gufw
+    state: present
+  become: yes

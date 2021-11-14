@@ -16,3 +16,8 @@
 - name: Brave
   tags: web, browser
   import_tasks: brave.yaml
+  become: yes
+- name: Xmodmap
+  import_tasks: xmodmap.yaml
+- name: gufw
+  import_tasks: gufw.yaml

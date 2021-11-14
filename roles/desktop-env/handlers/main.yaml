@@ -1,0 +1,6 @@
+- name: Add Alacritty desktop entry
+  command: desktop-file-install "{{ alacritty_src }}/extra/linux/Alacritty.desktop"
+  become: yes
+- name: Update desktop entry database
+  command: update-desktop-database
+  become: yes
