@@ -1,27 +1,44 @@
-- name: Install dnf-plugins-core
-  dnf:
-    name: dnf-plugins-core
+- name: Install docker deps
+  package:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
     state: present
-  become: yes
 
-- name: Add docker repo
-  shell: 'dnf config-manager \
-    --add-repo \
-        https://download.docker.com/linux/fedora/docker-ce.repo'
-  become: yes
+- name: Add pgp key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Save the current Ubuntu release version into a variable
+  shell: lsb_release -cs
+  register: ubuntu_version
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ubuntu_version.stdout }} stable"
+    state: present
+
+- name: Update apt
+  ansible.builtin.apt:
+    update_cache: yes
+    force_apt_get: yes
 
 - name: Install docker
   package:
-    name: docker-ce, docker-ce-cli, containerd.io
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
     state: present
-  become: yes
     
 - name: Enable docker service
   systemd:
     state: started
     name: docker
     enabled: yes
-  become: yes
     
 - name: Add docker group
   group:
@@ -35,4 +52,17 @@
     groups: 
       - docker
     state: present
-  become: yes
+
+- name: Save the kernel name into a variable
+  shell: uname -s
+  register: kernel_name
+
+- name: Save the architecture into a variable
+  shell: uname -m
+  register: arch
+
+- name: Download docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ kernel_name.stdout }}-{{ arch.stdout }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
