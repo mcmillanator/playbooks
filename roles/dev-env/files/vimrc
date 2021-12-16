@@ -1,5 +1,7 @@
 " Pathogen for installing plugins
 execute pathogen#infect()
+" turn on mouse for all vim modes
+set mouse=a
 " syntax highlighting on
 syntax on
 filetype plugin indent on
@@ -24,6 +26,14 @@ set clipboard=unnamedplus
 set spell spelllang=en_us
 " vim-obsession options
 set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,terminal"
+" turn on paste mode
+set paste
+" keep buffers hidden in the background, useful for keeping unsaved changes in multiple buffers
+set hidden
+" use an undo file
+set undofile
+" set a directory to store the undo history
+set undodir=~/.vim/undo-history/
 
 " Open man page in a window
 " pressing K will open the man page of the highlighted word
