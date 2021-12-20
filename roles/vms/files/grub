@@ -8,7 +8,7 @@ GRUB_TIMEOUT_STYLE=hidden
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
 GRUB_CMDLINE_LINUX_DEFAULT="rhgb quiet"
-GRUB_CMDLINE_LINUX="rhgb quiet splash amd_iommu=on amd_iommu=pt hugepages=8192 vfio_pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9 kvm.ignore_msrs=1"
+GRUB_CMDLINE_LINUX="rhgb quiet splash amd_iommu=on amd_iommu=pt rd.driver.pre=vfio-pci vfio-pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9 kvm.ignore_msrs=1"
 
 # Uncomment to enable BadRAM filtering, modify to suit your needs
 # This works with Linux (no patch required) and with any kernel that obtains

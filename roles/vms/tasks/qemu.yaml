@@ -3,7 +3,11 @@
     name:
       driverctl,
       qemu,
-      @virtualization
+      qemu-utils,
+      libvirt-daemon-system,
+      libvirt-clients,
+      virt-manager,
+      ovmf
     state: present
 
 - name: Append groups to user
@@ -12,35 +16,26 @@
     groups: 
       - kvm
       - libvirt
-      - qemu
     append: yes
 
-- name: Ensure grub loads iommu
-  copy:
-    src: grub
-    dest: /etc/default/grub
-    backup: yes
-    owner: root
-    group: root
-    mode: 0644
-  notify: Update grub
+- name: Ensure directories exist
+  file:
+    path: "{{ item.dir }}"
+    state: director
+  loop:
+    - { dir: "{{ libvirt_begin_dir }}" }
+    - { dir: "{{ libvirt_end_dir }}" }
 
-- name: Ensure dracut loads vfio
+- name: Copy files
   copy:
-    src: vfio.conf 
-    dest: /etc/dracut.conf.d/vfio.conf
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
     backup: yes
     owner: root
-    group: root
-    mode: 0644
-  notify: Update dracut
-
-- name: Copy vfio-pci-override.sh
-  copy:
-    src: vfio-pci-override.sh
-    dest: /usr/sbin/vfio-pci-override.sh
-    backup: yes
-    owner: root
-    group: root
+    group: libvirt
     mode: 0755
-  notify: Update dracut
+  loop:
+    - { src: kvm.conf, dst: "{{ libvirt_hooks_dir }}" }
+    - { src: qemu, dst: "{{ qemu_hook }}" }
+    - { src: bind_vfio.sh, dst: "{{ libvirt_begin_dir }}" }
+    - { src: unbind_vfio.sh, dst: "{{ libvirt_end_dir }}" }

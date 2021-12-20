@@ -9,3 +9,8 @@ build_tag: "B2-0-g76710ef201"
 # ivshmem
 ivshmem_src_dir: "{{ ansible_env.HOME }}/src/looking-glass"
 ivshmem_build_dir: "{{ src_dir }}/module"
+# libvirt hooks for qemu
+qemu_hook: /etc/libvirt/hooks/qemu
+libvirt_hooks_dir: /etc/libvirt/hooks
+libvirt_begin_dir: "{{ libvirt_hooks_dir }}/qemu.d/win10/prepare/begin"
+libvirt_end_dir: "{{ libvirt_hooks_dir }}/qemu.d/win10/release/end"
