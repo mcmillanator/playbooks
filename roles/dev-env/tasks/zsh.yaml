@@ -23,7 +23,7 @@
     - { src: zsh/aliases.zsh, dest: "{{ zsh_custom_path }}" }
     - { src: zsh/chruby.zsh, dest: "{{ zsh_custom_path }}" }
     - { src: zsh/env.zsh, dest: "{{ zsh_custom_path }}" }
-    - { src: zsh/nvm.zsh, dest: "{{ zsh_custom_path }}" }
+    - { src: zsh/nvim.zsh, dest: "{{ zsh_custom_path }}" }
     - { src: zsh/agnoster.zsh-theme, dest: "{{ zsh_custom_path }}/themes" }
     - { src: zsh/zshrc, dest: "{{ zshrc }}" }
 - name: Install oh-my-zsh

@@ -20,3 +20,9 @@
 - name: mkcert
   tags: mkcert
   import_tasks: mkcert.yaml
+- name: Install and configure zsh
+  tags: zsh, terminal
+  import_tasks: zsh.yaml
+- name: Install and configure tmux
+  tags: tmux, terminal
+  import_tasks: tmux.yaml
