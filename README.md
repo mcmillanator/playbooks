@@ -17,6 +17,8 @@ ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.y
 
 * docker-compose
 * vscode
+* home-brew
+* ImageMagick
 
 ### Services & Servers
 
