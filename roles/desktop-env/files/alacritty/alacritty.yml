@@ -163,7 +163,7 @@ mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
 # opacity
-background_opacity: 0.9
+window.opacity: 0.9
 
 
 # Shell
