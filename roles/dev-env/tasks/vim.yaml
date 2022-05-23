@@ -69,6 +69,21 @@
     url: https://github.com/vim-ruby/vim-ruby.git
   - name: vim-test
     url: https://github.com/janko-m/vim-test.git
+  - name: vim-signify
+    url: https://github.com/mhinz/vim-signify.git
+  - name: vim-rails
+    url: https://github.com/tpope/vim-rails.git
+  - name: vim-bundler
+    url: https://github.com/tpope/vim-bundler.git
+  - name: vim-endwise
+    url: https://github.com/tpope/vim-endwise.git
+  - name: vim-startify
+    url: https://github.com/mhinz/vim-startify.git
+  - name: vim-obsession
+    url: https://github.com/tpope/vim-obsession.git
+  - name: nvim-lspconfig
+    url: https://github.com/neovim/nvim-lspconfig.git
+
 - name: Ensure .vimrc config in place
   copy:
     src: vimrc
