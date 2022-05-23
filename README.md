@@ -37,6 +37,7 @@ ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.y
 #### Gems
 
 * tmuxinator
+* gemrc (no docs)
 
 #### Guard
 
