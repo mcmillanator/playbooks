@@ -21,7 +21,7 @@
 - name: Ensure directories exist
   file:
     path: "{{ item.dir }}"
-    state: director
+    state: directory
   loop:
     - { dir: "{{ libvirt_begin_dir }}" }
     - { dir: "{{ libvirt_end_dir }}" }
