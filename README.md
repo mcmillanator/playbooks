@@ -5,7 +5,8 @@ No consideration has been given to use by other people.
 
 ## Quick Start
 
-ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml
+`ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml`
+`ansible-playbook -K desktop.yml --connection=local`
 
 ## TODO
 
@@ -22,9 +23,7 @@ ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.y
 
 ### Services & Servers
 
-* elastic search
 * postgresql
-* rabbitmq
 * redis
 
 ### Configs
