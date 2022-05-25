@@ -5,8 +5,15 @@ No consideration has been given to use by other people.
 
 ## Quick Start
 
-`ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml`
-`ansible-playbook -K desktop.yml --connection=local`
+```
+ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml
+
+ansible-playbook -K desktop.yml --connection=local
+
+# if there is an error about python3-apt then use the following to ensure ansible is using the correct python3
+ansible-playbook -K desktop.yml --connection=local -e 'ansible_python_interpreter=/usr/bin/python3'
+```
+
 
 ## TODO
 
