@@ -6,6 +6,7 @@
       - grip
       - silversearcher-ag
       - vim
+      - unzip
     state: present
   become: yes
 - name: Ensure .vim directories exists
