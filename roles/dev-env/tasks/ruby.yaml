@@ -1,0 +1,25 @@
+- name: Ensure directories exists
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ src_dir }}"
+- name: Clone repos
+  git:
+    dest: "{{ src_dir }}/{{ item.name }}"
+    repo: "{{ item.url }}"
+    version: "{{ item.version }}"
+    clone: yes
+    update: yes
+    recursive: no
+  notify:
+    - Install ruby-install
+    - Install chruby
+  loop:
+  - name: ruby-install
+    url: https://github.com/postmodern/ruby-install.git
+    version: v0.8.1
+  - name: chruby
+    url: https://github.com/postmodern/chruby.git
+    version: v0.3.9

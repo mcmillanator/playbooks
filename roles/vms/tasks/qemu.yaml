@@ -1,0 +1,41 @@
+- name: Install qemu
+  package:
+    name:
+      driverctl,
+      qemu,
+      qemu-utils,
+      libvirt-daemon-system,
+      libvirt-clients,
+      virt-manager,
+      ovmf
+    state: present
+
+- name: Append groups to user
+  user:
+    name: "{{ username }}"
+    groups: 
+      - kvm
+      - libvirt
+    append: yes
+
+- name: Ensure directories exist
+  file:
+    path: "{{ item.dir }}"
+    state: directory
+  loop:
+    - { dir: "{{ libvirt_begin_dir }}" }
+    - { dir: "{{ libvirt_end_dir }}" }
+
+- name: Copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+    backup: yes
+    owner: root
+    group: libvirt
+    mode: 0755
+  loop:
+    - { src: kvm.conf, dst: "{{ libvirt_hooks_dir }}" }
+    - { src: qemu, dst: "{{ qemu_hook }}" }
+    - { src: bind_vfio.sh, dst: "{{ libvirt_begin_dir }}" }
+    - { src: unbind_vfio.sh, dst: "{{ libvirt_end_dir }}" }

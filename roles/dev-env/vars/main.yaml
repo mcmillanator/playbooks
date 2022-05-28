@@ -1,0 +1,13 @@
+vim_dir: "{{ ansible_env.HOME }}/.vim"
+vimrc: "{{ ansible_env.HOME }}/.vimrc"
+zshrc: "{{ ansible_env.HOME }}/.zshrc"
+oh_my_zsh_dir: "{{ ansible_env.HOME }}/.oh-my-zsh"
+oh_my_zsh_repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+zsh_custom_path: "{{ oh_my_zsh_dir }}/custom"
+tmux_dir: "{{ ansible_env.HOME }}/.tmux"
+# src_dir is used for downloading source files to compile code
+src_dir: "{{ ansible_env.HOME }}/.src"
+mkcert_dir: "{{ ansible_env.HOME }}/.src/mkcert"
+home: "{{ ansible_env.HOME }}"
+omz_dir: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/"
+username: "{{ ansible_env.USER }}"

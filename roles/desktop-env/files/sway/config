@@ -1,0 +1,262 @@
+# Read `man 5 sway` for a complete reference.
+workspace_auto_back_and_forth yes
+font pango:Hack Nerd Font Mono 14
+
+### Variables
+set $alt Mod1
+set $super Mod4
+set $ctrl control
+
+### dmenu scripts
+bindsym $super+d exec "~/.config/sway/scripts/dmenu.sh"
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Window borders
+default_border pixel 1
+default_floating_border normal
+hide_edge_borders smart
+
+gaps inner 10
+
+# Opacity / Transparency
+set $opacity 0.9
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opactiy
+
+# Your preferred terminal emulator
+set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /usr/share/backgrounds/default.png fill
+
+#
+# Example configuration:
+#
+output HDMI-A-1 resolution 1920x1080 position 0,0
+output VGA-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+set $mon1 output VGA-1
+set $mon2 output HDMI-A-1
+workspace 1 $mon1
+workspace 2 $mon1
+workspace 3 $mon1
+workspace 4 $mon1
+workspace 5 $mon1
+ 
+workspace 6 $mon2
+workspace 7 $mon2
+workspace 8 $mon2
+workspace 9 $mon2
+workspace 0 $mon2
+workspace chat $mon2
+workspace music $mon2
+
+set $music workspace music
+assign [title="Pandora"] $music
+bindsym $super+m exec --no-startup-id ~/.config/sway/scripts/workspace.sh music -a "brave-browser --new-window https:/www.pandora.com"
+bindsym $alt+$super+m move container to $music
+
+set $web workspace web
+bindsym $super+w exec --no-startup-id ~/.config/sway/scripts/workspace.sh web -s "brave-browser"
+bindsym $alt+$super+w move container to $web
+
+set $email workspace email 
+bindsym $super+e exec --no-startup-id ~/.config/sway/scripts/workspace.sh email -s "brave-browser"
+bindsym $alt+$super+e move container to $email
+
+### Idle configuration
+#
+# Example configuration:
+#
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $super+Return exec $term
+
+    # Kill focused window
+    bindsym $ctrl+Shift+q kill
+
+    # Start your launcher
+    bindsym $super+r exec $menu
+
+    # Drag floating windows by holding down $ctrl and left mouse button.
+    # Resize them with right mouse button + $ctrl.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $ctrl normal
+
+    # Reload the configuration file
+    bindsym $ctrl+$super+r reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $super+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $alt+$left focus left
+    bindsym $alt+$down focus down
+    bindsym $alt+$up focus up
+    bindsym $alt+$right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $ctrl+Shift+$left move left
+    bindsym $ctrl+Shift+$down move down
+    bindsym $ctrl+Shift+$up move up
+    bindsym $ctrl+Shift+$right move right
+    bindsym $super+Shift+Right move right
+#
+# Workspaces:
+#
+
+# move workspace
+bindsym $ctrl+$super+l move workspace to output left
+bindsym $ctrl+$super+h move workspace to output right
+bindsym $ctrl+$super+j move workspace to output down
+bindsym $ctrl+$super+k move workspace to output up
+
+# set workspace vars
+set $workspace1 workspace 1
+set $workspace2 workspace 2
+set $workspace3 workspace 3
+set $workspace4 workspace 4
+set $workspace5 workspace 5
+set $workspace6 workspace 6
+set $workspace7 workspace 7
+set $workspace8 workspace 8
+set $workspace9 workspace 9
+set $workspace10 workspace 10
+
+# switch to workspace
+bindsym $super+Tab exec swaymsg workspace `~/.config/sway/scripts/workspaces.py | dmenu`
+bindsym $super+1 $workspace1
+bindsym $super+2 $workspace2
+bindsym $super+3 $workspace3
+bindsym $super+4 $workspace4
+bindsym $super+5 $workspace5
+bindsym $super+6 $workspace6
+bindsym $super+7 $workspace7
+bindsym $super+8 $workspace8
+bindsym $super+9 $workspace9
+bindsym $super+0 $workspace10
+bindsym $super+l exec swaymsg workspace next
+bindsym $super+h exec swaymsg workspace prev
+
+# move focused container to workspace
+bindsym $alt+$super+Tab exec swaymsg move container to workspace `~/.config/sway/scripts/workspaces.py | dmenu`
+bindsym $alt+$super+1 move container to $workspace1
+bindsym $alt+$super+2 move container to $workspace2
+bindsym $alt+$super+3 move container to $workspace3
+bindsym $alt+$super+4 move container to $workspace4
+bindsym $alt+$super+5 move container to $workspace5
+bindsym $alt+$super+6 move container to $workspace6
+bindsym $alt+$super+7 move container to $workspace7
+bindsym $alt+$super+8 move container to $workspace8
+bindsym $alt+$super+9 move container to $workspace9
+bindsym $alt+$super+0 move container to $workspace10
+
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $super+b or $super+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $super+backslash splith
+    bindsym $super+minus splitv
+
+    # Switch the current container between different layout styles
+    bindsym $alt+s layout stacking
+    bindsym $alt+w layout tabbed
+    bindsym $alt+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $super+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $super+$ctrl+f floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $super+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $super+p focus parent
+    #
+    # Move focus to the child container
+    bindsym $super+c focus child
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    # bindsym $super+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    # bindsym $super+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $super+$alt+r mode "resize"
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+
+include /etc/sway/config.d/*
+
+exec_always pkill waybar ; sleep 1 ; waybar

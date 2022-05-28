@@ -1,0 +1,14 @@
+- name: Install git
+  package:
+    name: git
+    state: present
+  become: yes
+- name: Copy configs
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0700
+  loop:
+    - { src: git/gitconfig, dest: "{{ home }}/.gitconfig" }
+    - { src: git/gitignore_global, dest: "{{ home }}/.gitignore_global" }
+    - { src: git/git_template/hooks, dest: "{{ home }}/.git_template" }

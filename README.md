@@ -1,13 +1,21 @@
-# Quick Start
+# About
 
-ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
+This is my ansible playbook collection.  I use ansible for basic configuration of my personal computer(s) at home.
+No consideration has been given to use by other people.
+
+## Quick Start
+
+```
+ansible-pull --url <https://github.com/mcmillanator/playbooks.git> desktop-env.yaml
+
+ansible-playbook -K desktop.yml --connection=local
+
+# if there is an error about python3-apt then use the following to ensure ansible is using the correct python3
+ansible-playbook -K desktop.yml --connection=local -e 'ansible_python_interpreter=/usr/bin/python3'
+```
+
 
 ## TODO
-
-### User Groups
-
-* libvirt-qemu
-* docker
 
 ### VMS
 
@@ -15,19 +23,14 @@ ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
 
 ### Packages
 
-* qemu
-* virt-manager
-* docker
 * docker-compose
+* vscode
+* home-brew
+* ImageMagick
 
 ### Services & Servers
 
-* dockerd
-* elastic search
-* libvirtd
-* openssh-server
 * postgresql
-* rabbitmq
 * redis
 
 ### Configs
@@ -40,6 +43,7 @@ ansible-pull --url <https://github.com/mcmillanator/playbooks.git> zsh/zsh.yaml
 #### Gems
 
 * tmuxinator
+* gemrc (no docs)
 
 #### Guard
 

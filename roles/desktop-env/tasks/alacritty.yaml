@@ -1,0 +1,51 @@
+- name: Install and configure alacritty
+  package:
+    name: cargo, cmake, pkg-config, libfreetype6-dev, libfontconfig1-dev, libxcb-xfixes0-dev, libxkbcommon-dev, python3
+    state: present
+  become: yes
+- name: Ensure directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ alacritty_dir }}"
+- name: Ensure config files are in place
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    backup: yes
+  loop:
+    - { src: alacritty/alacritty.yml, dest: "{{ alacritty_dir }}/.alacritty.yml" }
+- name: Clone alacritty repo
+  git:
+    dest: "{{ src_dir }}/{{ item.name }}"
+    repo: "{{ item.url }}"
+    clone: yes
+    update: yes
+    recursive: no
+    version: "{{ alacritty_build_tag }}"
+  loop:
+  - name: alacritty
+    url: https://github.com/alacritty/alacritty.git
+- name: Build binary
+  command: cargo build --release
+  args:
+    chdir: "{{ alacritty_src }}"
+    creates: "{{ alacritty_src }}/target/release/alacritty"
+- name: Copy binary
+  copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      owner: root
+      group: root
+      mode: '0755'
+  loop:
+    - src: "{{ alacritty_src }}/target/release/alacritty"
+      dest: "/usr/local/bin/alacritty"
+    - src: "{{ alacritty_src }}/extra/logo/alacritty-term.svg"
+      dest: "/usr/share/pixmaps/Alacritty.svg"
+  become: yes
+  notify: 
+    - Add Alacritty desktop entry
+    - Update desktop entry database

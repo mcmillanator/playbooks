@@ -1,0 +1,25 @@
+- name: Install ssh client and server
+  package:
+    name: openssh-server
+    state: present
+  become: yes
+
+- name: Enable ssh service
+  systemd:
+    state: started
+    name: sshd
+    enabled: yes
+  become: yes
+
+- name: Ensure .ssh exist
+  file:
+    path: "{{ home }}/.ssh"
+    state: directory
+    mode: 0700
+
+- name: Copy authorized keys from github
+  get_url:
+    mode: '0600'
+    backup: yes
+    dest: "{{ home }}/.ssh/authorized_keys"
+    url: https://github.com/mcmillanator.keys

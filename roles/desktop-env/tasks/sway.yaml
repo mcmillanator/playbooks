@@ -1,0 +1,28 @@
+- name: Install required packages
+  package:
+    name:
+      dmenu, sway, swayidle
+    state: present
+  become: yes
+- name: Ensure directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ sway_dir }}"
+- name: Ensure config files are in place
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    backup: yes
+  loop:
+    - { src: sway/config, dest: "{{ sway_dir }}" }
+- name: Ensure scripts are in place
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    backup: yes
+    mode: 0700
+  loop:
+    - { src: sway/scripts, dest: "{{ sway_dir }}" }

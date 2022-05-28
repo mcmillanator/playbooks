@@ -1,0 +1,31 @@
+- name: Ensure directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "{{ ivshmem_build_dir }}"
+- name: make the IVSHMEM kernel module
+  command: make "{{ ivshmem_build_dir }}"
+  args:
+    chdir: "{{ ivshmem_build_dir }}"
+    creates: "{{ ivshmem_build_dir }}/kvmfr.mod"
+- name: install module prerequ uio
+  become: yes
+  command: modprobe uio
+  args:
+    chdir: "{{ ivshmem_build_dir }}"
+    creates: /dev/uio0
+- name: install module kvmfr
+  become: yes
+  command: insmod kvmfr.ko
+  args:
+    chdir: "{{ ivshmem_build_dir }}"
+    creates: /dev/uio0
+- name: Set permissions
+  become: yes
+  file:
+    path: "{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+  loop:
+    - /dev/uio0

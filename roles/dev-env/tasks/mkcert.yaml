@@ -1,0 +1,29 @@
+- name: Install mkcert dependencies
+  package: 
+    name:
+      - golang
+      - libnss3-tools
+    state: present
+  become: yes
+- name: Clone mkcert
+  git:
+    dest: "{{ mkcert_dir }}"
+    repo: https://github.com/FiloSottile/mkcert
+    clone: yes
+    recursive: no
+- name: Save git tags to variable
+  shell: git describe --tags
+  args:
+    chdir: "{{ mkcert_dir }}"
+  register: mkcert_tags
+- name: Build mkcert
+  command: go build -ldflags "-X main.Version={{ mkcert_tags.stdout }}"
+  args:
+    chdir: "{{ mkcert_dir }}"
+    creates: "{{ mkcert_dir }}/mkcert"
+- name: Copy mkcert executable to dest
+  copy:
+    src: "{{ mkcert_dir }}/mkcert"
+    dest: /usr/local/bin/mkcert
+    mode: 0755
+  become: yes

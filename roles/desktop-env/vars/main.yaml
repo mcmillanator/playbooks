@@ -1,0 +1,6 @@
+sway_dir: "{{ ansible_env.HOME }}/.config/sway"
+alacritty_dir: "{{ ansible_env.HOME }}/"
+waybar_dir: "{{ ansible_env.HOME }}/.config/waybar"
+src_dir: "{{ ansible_env.HOME }}/.src"
+alacritty_src: "{{ src_dir }}/alacritty"
+alacritty_build_tag: "v0.10.1"
