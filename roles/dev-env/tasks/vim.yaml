@@ -19,8 +19,6 @@
     - "{{ vim_dir }}/bundle"
     - "{{ vim_dir }}/colors"
     - "{{ vim_dir }}/undo-history"
-    - /usr/share/fonts
-  become: yes
 - name: install the Hack font
   ansible.builtin.unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
