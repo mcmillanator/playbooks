@@ -5,7 +5,7 @@
       # grip is a github markdown server useful for markdown previews in the browser
       - grip
       - silversearcher-ag
-      - vim
+      - neovim
     state: present
   become: yes
 - name: Ensure directories exists
