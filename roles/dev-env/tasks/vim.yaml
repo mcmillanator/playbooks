@@ -90,3 +90,9 @@
     dest: "{{ vimrc }}"
     backup: yes
     mode: 0640
+- name: Ensure .nvim config in place
+  copy:
+    src: nvim
+    dest: "{{ nvim_config }}"
+    backup: yes
+    mode: 0640
