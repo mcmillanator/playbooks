@@ -11,7 +11,7 @@ require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
-  use 'williamboman/nvim-lsp-installer'
+  use 'williamboman/mason.nvim'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
   -- Simple plugins can be specified as strings
@@ -40,7 +40,7 @@ require('packer').startup(function()
   end
 end)
 
-require("nvim-lsp-installer").setup {
+require("mason").setup {
   automatic_installation = true
 }
 
