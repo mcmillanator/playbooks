@@ -11,8 +11,18 @@ require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
-  use 'williamboman/mason.nvim'
+  use 'williamboman/nvim-lsp-installer'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'jamestthompson3/nvim-remote-containers' -- use vim with development containers
+  use 'ekalinin/Dockerfile.vim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use {
+    'esensar/nvim-dev-container',
+    requires = { 'nvim-treesitter/nvim-treesitter' }
+  }
 
   -- Simple plugins can be specified as strings
   use 'rstacruz/vim-closer'
@@ -40,9 +50,12 @@ require('packer').startup(function()
   end
 end)
 
-require("mason").setup {
+require("nvim-lsp-installer").setup {
   automatic_installation = true
 }
 
 -- luasnip setup
 local luasnip = require 'luasnip'
+
+-- nvim-dev-container setup
+require("devcontainer").setup{}
