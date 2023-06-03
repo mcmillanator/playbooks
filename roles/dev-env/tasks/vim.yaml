@@ -8,6 +8,14 @@
       - neovim
     state: present
   become: yes
+- name: Ensure directories exists for fonts
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - "/usr/share/fonts"
+  become: yes
 - name: Ensure directories exists
   file:
     path: "{{ item }}"
