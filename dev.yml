@@ -1,4 +1,4 @@
 ---
-- hosts: workstation
+- hosts: server,gaming
   roles:
     - dev-env
