@@ -13,6 +13,7 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
   use 'williamboman/mason.nvim'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'parkr/vim-jekyll'
 
   -- Simple plugins can be specified as strings
   use 'rstacruz/vim-closer'
