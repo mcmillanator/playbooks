@@ -10,4 +10,3 @@ export ARCHFLAGS="-arch x86_64"
 
 # Source directory for my applications
 export APPS_DIR="$HOME/Documents/Projects"
-
