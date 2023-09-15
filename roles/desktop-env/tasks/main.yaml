@@ -1,17 +1,9 @@
-- name: Install and configure the desktop environment
-  tags: sway, gui, desktop-env
-  import_tasks: sway.yaml
 - name: Install and configure alacritty terminal emulator
   tags: alacritty, terminal
   import_tasks: alacritty.yaml
-- name: Install waybar
-  tags: waybar, sway
-  import_tasks: waybar.yaml
 - name: Brave
   tags: web, browser
   import_tasks: brave.yaml
   become: yes
-- name: Xmodmap
-  import_tasks: xmodmap.yaml
 - name: gufw
   import_tasks: gufw.yaml

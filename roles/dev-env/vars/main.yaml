@@ -1,5 +1,6 @@
 vim_dir: "{{ ansible_env.HOME }}/.vim"
 vimrc: "{{ ansible_env.HOME }}/.vimrc"
+nvim_config: "{{ ansible_env.HOME }}/.config/"
 zshrc: "{{ ansible_env.HOME }}/.zshrc"
 oh_my_zsh_dir: "{{ ansible_env.HOME }}/.oh-my-zsh"
 oh_my_zsh_repo: "https://github.com/ohmyzsh/ohmyzsh.git"

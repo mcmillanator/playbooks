@@ -5,11 +5,18 @@
       # grip is a github markdown server useful for markdown previews in the browser
       - grip
       - silversearcher-ag
-      - vim
-      - unzip
+      - neovim
     state: present
   become: yes
-- name: Ensure .vim directories exists
+- name: Ensure directories exists for fonts
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  loop:
+    - "/usr/share/fonts"
+  become: yes
+- name: Ensure directories exists
   file:
     path: "{{ item }}"
     state: directory
@@ -97,5 +104,11 @@
   copy:
     src: vimrc
     dest: "{{ vimrc }}"
+    backup: yes
+    mode: 0640
+- name: Ensure .nvim config in place
+  copy:
+    src: nvim
+    dest: "{{ nvim_config }}"
     backup: yes
     mode: 0640
